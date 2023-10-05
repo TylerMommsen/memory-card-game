@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Card = ({ image }) => {
+const Card = ({ image, handleImgClick }) => {
 	return (
 		<>
 			<div className="card">
-				<img className="card-image" src={image} />
+				<img className="card-image" src={image} data-name={image} onClick={handleImgClick} />
 			</div>
 		</>
 	);
@@ -12,6 +12,7 @@ const Card = ({ image }) => {
 
 Card.propTypes = {
 	image: PropTypes.string.isRequired,
+	handleImgClick: PropTypes.func.isRequired,
 };
 
 export default Card;

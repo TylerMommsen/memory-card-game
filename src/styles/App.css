@@ -25,6 +25,14 @@ header {
 	font-size: 24px;
 }
 
+.dark-overlay {
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
 main {
 	display: flex;
 	flex-direction: column;
@@ -32,6 +40,58 @@ main {
 	align-items: center;
 	height: auto;
 	flex: 1;
+}
+
+.win-display {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+	background-color: white;
+	width: 500px;
+	height: 400px;
+	border-radius: 20px;
+	color: black;
+}
+
+.lose-display {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	flex-direction: column;
+	gap: 50px;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+	background-color: white;
+	width: 500px;
+	height: 400px;
+	border-radius: 20px;
+	color: black;
+}
+
+.lose-display > button {
+	border-radius: 10px;
+	border: none;
+	padding: 20px 40px 20px 40px;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: red;
+	color: white;
+
+	&:hover {
+		background-color: rgb(228, 0, 0);
+	}
+
+	&:active {
+		background-color: rgb(206, 0, 0);
+	}
 }
 
 .cards {
@@ -64,7 +124,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-	padding: 20px;
+	padding: 10px;
 }
 
 footer > a {

@@ -7,6 +7,7 @@ function App() {
 	return (
 		<>
 			<Header></Header>
+			<div className="dark-overlay"></div>
 			<Main></Main>
 			<Footer></Footer>
 		</>
