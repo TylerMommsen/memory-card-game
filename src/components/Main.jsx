@@ -3,6 +3,7 @@ import Score from './Score';
 import WinDisplay from './WinDisplay';
 import LoseDisplay from './LoseDisplay';
 import { useCallback, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const car1 = '/card-imgs/car1.jpg';
 const car2 = '/card-imgs/car2.jpg';
@@ -89,8 +90,8 @@ const Main = () => {
 		}
 
 		// create array of card components with the images
-		const cardArray = selectedImgs.map((image, index) => (
-			<Card key={image + `${index}`} image={image} handleImgClick={handleImgClick} />
+		const cardArray = selectedImgs.map((image) => (
+			<Card key={uuidv4()} image={image} handleImgClick={handleImgClick} />
 		));
 
 		return cardArray;

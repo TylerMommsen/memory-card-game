@@ -139,10 +139,10 @@ main {
 		transform: translate(0, 0) rotate(0deg) scale(1);
 	}
 	33% {
-		transform: translate(-3px, -3px) rotate(-10deg) scale(1.05);
+		transform: translate(-1px, -1px) rotate(-4deg) scale(1.03);
 	}
 	66% {
-		transform: translate(3px, -3px) rotate(10deg) scale(1.05);
+		transform: translate(1px, -1px) rotate(4deg) scale(1.03);
 	}
 }
 
