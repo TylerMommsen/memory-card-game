@@ -53,18 +53,44 @@ const Main = () => {
 	);
 
 	const shuffleCards = useCallback(() => {
+		// add atleast 1 card that hasn't been clicked yet
+		const addUnclickedImage = (images) => {
+			let done = false;
+			while (!done) {
+				const randomIndex = Math.floor(Math.random() * allImgs.length);
+				if (
+					!clickedCards.includes(allImgs[randomIndex]) &&
+					!images.includes(allImgs[randomIndex])
+				) {
+					done = true;
+					const imageIndexToReplace = Math.floor(Math.random() * images.length);
+					let newImages = images;
+					newImages.splice(imageIndexToReplace, 1, allImgs[randomIndex]);
+					return newImages;
+				}
+			}
+		};
+
 		// Fisher-Yates shuffle algorithm
 		for (let i = allImgs.length - 1; i >= 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
 			[allImgs[i], allImgs[j]] = [allImgs[j], allImgs[i]];
 		}
 
-		// select the first 8 shuffled images
-		const selectedImgs = allImgs.slice(0, 8);
+		// select random 5 shuffled images
+		const randomStartPoint = Math.floor(Math.random() * (allImgs.length - 5));
+		const endPoint = randomStartPoint + 5;
+		let selectedImgs = allImgs.slice(randomStartPoint, endPoint);
+
+		// check if every single card has already been clicked
+		const allCardsClicked = selectedImgs.every((card) => clickedCards.includes(card));
+		if (allCardsClicked) {
+			selectedImgs = addUnclickedImage(selectedImgs);
+		}
 
 		// create array of card components with the images
 		const cardArray = selectedImgs.map((image, index) => (
-			<Card key={index} image={image} handleImgClick={handleImgClick} />
+			<Card key={image + `${index}`} image={image} handleImgClick={handleImgClick} />
 		));
 
 		return cardArray;
